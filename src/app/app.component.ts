@@ -4,10 +4,10 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'dse-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'desafio-editor';
-}
+export class AppComponent { }
