@@ -1,0 +1,7 @@
+<div class="salida">
+  {{contenido}}
+</div>
+<quill-editor format="html"
+              (onEditorChanged)="changedEditor($event)"
+              [(ngModel)]="contenido">
+</quill-editor>
