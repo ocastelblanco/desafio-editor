@@ -1,1 +1,11 @@
-<dse-editor></dse-editor>
+@for (pagina of paginas; track pagina; let numPag = $index) {
+<p-splitter>
+  <ng-template pTemplate>
+    <dse-visor [contenido]="contenidosVisor[numPag]" />
+  </ng-template>
+  <ng-template pTemplate>
+    <dse-editor [contenido]="contenidosEditor[numPag]"
+                (cambiaContenido)="contenidosVisor[numPag] = $event" />
+  </ng-template>
+</p-splitter>
+}

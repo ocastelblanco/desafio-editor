@@ -1,11 +1,10 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, ViewEncapsulation } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from 'ngx-quill';
 
 @Component({
   selector: 'dse-editor',
   standalone: true,
-  encapsulation: ViewEncapsulation.None,
   imports: [
     QuillEditorComponent,
     FormsModule,
@@ -17,8 +16,9 @@ import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from
   styleUrl: './editor.component.scss'
 })
 export class EditorComponent {
-  contenido: string = '<strong>Pepe Pepino</strong>';
+  @Input() contenido: string = '';
+  @Output() cambiaContenido: EventEmitter<string> = new EventEmitter<string>();
   changedEditor(event: EditorChangeContent | EditorChangeSelection | any): void {
-    if (event.html) console.log(event.html);
+    if (event.html) this.cambiaContenido.emit(event.html);
   }
 }
